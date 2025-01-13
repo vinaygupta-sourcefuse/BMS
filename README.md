@@ -1,3 +1,3 @@
 # BMS
 
-let's learn new concepts
+let's learn new concepts together
