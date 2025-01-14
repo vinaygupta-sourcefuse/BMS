@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input {
+      width: 94%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    h1,h2{
+        text-align: center;
+    }
+     select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #545e02;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background-color: #71b616;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Book Management System</h1>
+  <h2>Add a New Book</h2>
+
+  <form action="/add-book" method="post">
+    <label for="title">Book Title</label>
+    <input type="text" id="title" name="title" placeholder="Enter book title" required>
+
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author" placeholder="Enter author name" required>
+
+    <label for="isbn">ISBN</label>
+    <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN number" required>
+
+    <label for="pub_date">Publication Date</label>
+    <input type="date" id="pub_date" name="pub_date" required>
+
+    <label for="genre">Genre</label>
+    <select id="genre" name="genre" required>
+      <option value="">Select Genre</option>
+      <option value="fiction">Fiction</option>
+      <option value="non-fiction">Non-Fiction</option>
+      <option value="mystery">Mystery</option>
+      <option value="fantasy">Fantasy</option>
+      <option value="biography">Biography</option>
+    </select>
+
+    <button type="submit">Add Book</button>
+  </form>
+
+</body>
+</html>
