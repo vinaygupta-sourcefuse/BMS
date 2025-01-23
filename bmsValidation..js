@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookCountDiv = document.getElementById('bookCount');
     const bookListDiv = document.getElementById('bookList');
   
-    // const books = [];
+    // const books = []; 
     const books = [
       {
         title: "To Kill a Mockingbird",
