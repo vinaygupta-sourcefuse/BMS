@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    font-size: 10px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-container, .actions {
+    max-width: 400px;
+   
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  input, select {
+    width: 94%;
+    padding: 8px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  button {
+    width: 94%;
+    padding: 8px;
+    margin-top  : 10px;
+    background-color: #545e02;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border:none;
+  }
+  button:hover {
+    background-color: #71b616;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  .sidebar {
+    margin-left: 20px;
+    flex: 1;
+  }
+  .fixed {
+    /* position: fixed; */
+    top: 80px;
+    right: 20px;
+  
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  #bookCount, #bookList {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  #bookList {
+    margin-top: 20px;
+    text-align: left;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }

@@ -4,83 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Management System</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      font-size: small;
-    }
-    .container {
-      display: flex;
-      justify-content: space-between;
-    }
-    .form-container, .actions {
-      max-width: 400px;
-     
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, select, button {
-      width: 94%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #545e02;
-      color: white;
-      border: none;
-    }
-    button:hover {
-      background-color: #71b616;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .sidebar {
-      margin-left: 20px;
-      flex: 1;
-    }
-    .fixed {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-    
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-    #bookCount, #bookList {
-      text-align: center;
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-    #bookList {
-      margin-top: 20px;
-      text-align: left;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -165,6 +89,32 @@
     <!-- Sidebar -->
     <div class="sidebar fixed">
       <div id="bookCount">Number of books: 0</div>
+
+      <!-- Search and Filter Section -->
+      <div class="">
+        <h2>Search and Filter Books</h2>
+
+        <label for="searchTerm">Search by Title or Author</label>
+        <input type="text" id="searchTerm" placeholder="Enter title or author">
+
+        <label for="filterGenre">Filter by Genre</label>
+        <select id="filterGenre">
+          <option value="">Select Genres</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+          <option value="mystery">Mystery</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="biography">Biography</option>
+        </select>
+
+        <label for="filterYear">Filter by Publication Year</label>
+        <input type="number" id="filterYear" placeholder="Enter year">
+
+        <button id="applyFilters">Apply Filters</button>
+        <button id="resetFilters">Reset Filters</button>
+      </div>
+
+
       <div id="bookList">No books added yet.</div>
       <div id="bookList1"></div>
     </div>
