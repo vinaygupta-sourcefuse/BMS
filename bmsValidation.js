@@ -305,7 +305,13 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
 
       closeForm();
       toastr.success(`${title} has been added.`);
-      form.reset();
+
+      document.getElementById('title').value = '';
+      document.getElementById('author').value = '';
+      document.getElementById('isbn').value = '';
+      document.getElementById('pub_date').value = '';
+      document.getElementById('genre').value = '';
+
       updateBookDisplay();
     });
   
@@ -319,7 +325,6 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
       // Regular expression to validate strings without special characters
       const validStringPattern = /^[a-zA-Z0-9\s]+$/;
 
-
       if (newTitle && !validStringPattern.test(newTitle)) { // Check if the title is valid  and not empty
         toastr.error('Title must only contain letters, numbers, and spaces.');
         return;
@@ -330,9 +335,27 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
         return;
       }
 
+      if(isNaN(isbn)){
+         toastr.error('ISBN must be a number.');
+          return;  
+      }
+
+      const currentDate = new Date();
+      const pubDateObj = new Date(newPubDate);
+      const isPubDateValid = pubDateObj <= currentDate;
+
+      if (!isPubDateValid && pubDateObj === 'Invalid Date') { // Check if the publication date is not valid and empty
+        toastr.error('Publication date must be in the past.');
+        return;
+      }
+      
       const bookIndex = books.findIndex(book => book.isbn === isbn);
-      if (bookIndex === -1) {
+      if (bookIndex === -1 && isbn) {// Check if the book is not found and the ISBN is not empty
         toastr.error('Book not found.');
+        return;
+      }
+      if(!isbn){
+        // toastr.error('Please enter ISBN');
         return;
       }
   
@@ -345,18 +368,22 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
       books[bookIndex] = { ...books[bookIndex], ...updatedDetails }; // merges updatedDetails with the existing book details
   
       toastr.success('Book updated successfully.');
-    
+      closeForm();
       updateBookDisplay();
     };
   
     window.handleDelete = () => {
       const isbn = document.getElementById('deleteIsbn').value.trim();
       const bookIndex = books.findIndex(book => book.isbn === isbn);
-      if (bookIndex === -1) {
+      if (bookIndex === -1 && isbn) { // Check if the book is not found and the ISBN is not empty
         toastr.error('Book not found.');
         return;
       }
-  
+      if(!isbn){
+        // toastr.error('Please enter ISBN');
+        return;
+      }
+
       books.splice(bookIndex, 1); // one element should be removed, starting from the bookIndex
       toastr.success('Book deleted successfully.');
      
