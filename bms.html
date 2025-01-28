@@ -65,7 +65,7 @@
             <option value="fantasy">Fantasy</option>
             <option value="biography">Biography</option>
           </select>
-          <button onclick="handleEdit()" class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Book</button>
+          <button onclick="handleEdit()" id="edit" class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Book</button>
         </div>
       </div>
   
@@ -82,7 +82,7 @@
         <div class="space-y-4">
           <h2 class="text-xl font-semibold">Categorize Books</h2>
           <button onclick="handleCategorize()" class="w-full p-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Categorize Books</button>
-          <button onclick="removeCategorizedBooks()" class="w-full p-2 bg-gray-600 text-white rounded hover:bg-gray-700">Remove Categories</button>
+          <button onclick="removeCategorizedBooks()" id="remove" class="w-full p-2 bg-gray-600 text-white rounded hover:bg-gray-700">Remove Categories</button>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-  <script src="bmsValidation.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
