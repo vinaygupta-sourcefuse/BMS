@@ -114,6 +114,7 @@ class BookManager {
     constructor() {
       this.apiUrl = './books.json';
       this.books = [];
+      let originalBooks = []; // To store the original books fetched from the API
       this.booksPerPage = 5;
   
       // DOM elements
@@ -134,7 +135,7 @@ class BookManager {
       this.updateBookDisplay();
     }
   
-    attachEventListeners() {
+    attachEventListeners() { // Attach event listeners to the form and buttons
       document.getElementById('applyFilters').addEventListener('click', () => this.filterBooks());
       document.getElementById('resetFilters').addEventListener('click', () => this.resetFilters());
       this.sortAscButton.addEventListener('click', () => this.sortBooks('asc'));
@@ -149,7 +150,7 @@ class BookManager {
         if (e.target.id === 'formContainer') {
           this.closeForm();
         }
-        }); // Close the form container when the user clicks outside the form
+    }); // Close the form container when the user clicks outside the form
             
     }
   
@@ -178,7 +179,8 @@ class BookManager {
                 book.pubDate
             )
         );
-
+        this.originalBooks = [...this.books]; 
+        toastr.success('Books fetched successfully');
       } catch (error) {
         toastr.error(`Error fetching books: ${error.message}`);
         this.bookListDiv.textContent = 'Failed to load book data.';
@@ -276,6 +278,7 @@ class BookManager {
           <th class="px-4 py-2">Publication Date</th>
           <th class="px-4 py-2">Genre</th>
           <th class="px-4 py-2">Age</th>
+          <th class="px-4 py-2">Price</th>
         `;
         table.appendChild(headerRow);
   
@@ -292,6 +295,7 @@ class BookManager {
             <td class="px-4 py-2">${book.pubDate}</td>
             <td class="px-4 py-2">${book.genre}</td>
             <td class="px-4 py-2">${book.age}</td>
+            <td class="px-4 py-2">${book.price}</td>
           `;
           table.appendChild(row);
         }
@@ -330,6 +334,7 @@ class BookManager {
       const filterGenre = document.getElementById('filterGenre').value;
       const filterYear = document.getElementById('filterYear').value;
   
+      this.books = [...this.originalBooks]; // Reset the books array to the original books fetched from the API
       this.books = this.books.filter(book => {
         const matchesSearch = searchTerm
           ? book.title.toLowerCase().includes(searchTerm) ||
@@ -364,12 +369,26 @@ class BookManager {
         document.getElementById('filterGenre').value = '';
         document.getElementById('filterYear').value = '';
       
-        // Reset books and fetch them again
-        this.fetchBooks().then(() => {
-          toastr.success("Filters reset successfully");
-          this.updateBookDisplay();
-          this.scrollToTop();
-        });
+        this.books = [...this.originalBooks]; // Reset the books array to the original state
+        this.updateBookDisplay();
+
+        // setTimeout(function() { // not working because function has its own this keyword
+        //   this.scrollToTop();  // this refers to the window object
+        //   toastr.success('Filters reset successfully.');
+        // }, 1000);
+
+
+        // setTimeout(() => {   // working because arrow function does not have its own this keyword
+        //   this.scrollToBottom(); // this refers to the BookManager object
+        //   toastr.success('Filters reset successfully.');
+        // }, 1000); 
+
+        // Use .bind() to explicitly bind 'this'
+        setTimeout(function() {
+          this.scrollToBottom();
+          toastr.success('Filters reset successfully.');
+        }.bind(this), 1000); // 1000 milliseconds = 1 second
+
       }
 
     sortBooks(order) {
@@ -382,7 +401,6 @@ class BookManager {
       this.updateBookDisplay();
     }
   
-
     addBook(event) {
       event.preventDefault();
   
@@ -495,7 +513,7 @@ class BookManager {
                     <li>
                         <strong>${book.title}</strong> by <em>${book.author}</em>
                         <br />
-                        <span class="text-sm text-gray-600">ISBN: ${book.isbn}, Published: ${book.pubDate}</span>
+                        <span class="text-sm text-gray-600">ISBN: ${book.isbn}, Published: ${book.pubDate}, Price: ${book.price}</span>
                     </li>
                     `
                     )

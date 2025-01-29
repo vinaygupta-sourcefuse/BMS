@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
     const apiUrl = './books.json'; // Path to your JSON file
     
     let books = [];
-    
+    let originalBooks = []; 
     const fetchBooks = async () => {
       showLoader("Fetching books...");
       
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
         }
         const booksObject = await response.json();
         books = Object.values(booksObject);
-    
+        originalBooks = [...books]; 
         updateBookDisplay();
       } catch (error) {
         toastr.error(`Error fetching books: ${error.message}`);
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
       const filterYear = document.getElementById('filterYear').value;
 
       if(validate(searchTerm)){return;}
-
+      books = [...originalBooks]; // Reset the books array to the original state
       books = books.filter(book => {
         const matchesSearch = searchTerm
           ? book.title.toLowerCase().includes(searchTerm) ||
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to loa
       toastr.success("reset successfully")
     }, 1000); // 1000 milliseconds = 1 second
 
-      fetchBooks();
+      books = [...originalBooks]; // Reset the books array to the original state
       updateBookDisplay();
 
       setTimeout(function() {
