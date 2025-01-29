@@ -79,36 +79,6 @@ class EBook extends BaseClass{
 
 }
 
-class BookWithDiscount extends BaseClass{
-    constructor(title, author, genre, isbn, price, pubDate, discount){
-        super(title, author, genre, isbn, price, pubDate);
-        this.discount = this.validateDiscount(discount);
-    }
-
-    validateDiscount(discount){
-        if (!discount) {
-            toastr.error('Please enter the discount of the book!');
-            return 1;
-        }
-
-        if (discount) {
-            if (isNaN(discount)) {
-                toastr.error('Discount must be a number.');
-                return 1;
-            }
-            if (discount < 0) {
-                toastr.error('Discount must be a positive number.');
-                return 1;
-            }
-
-        }
-
-        return this.price - (this.price * discount / 100);
-    }
-
-}
-
-
 
 class BookManager {
     constructor() {
