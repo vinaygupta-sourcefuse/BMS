@@ -72,13 +72,9 @@ class BookManage {
         (_d = this.sortDescButton) === null || _d === void 0 ? void 0 : _d.addEventListener('click', () => this.sortBooks('desc'));
         (_e = this.form) === null || _e === void 0 ? void 0 : _e.addEventListener('submit', (e) => this.addBook(e));
         (_f = document.querySelector('#editBookForm button')) === null || _f === void 0 ? void 0 : _f.addEventListener('click', this.handleEdit.bind(this)); // bind helps to access the this keyword
-        // (window as any).handleEdit = this.handleEdit; // make it globally available because i used type="module" with <script>
         (_g = document.querySelector('#deleteBookForm button')) === null || _g === void 0 ? void 0 : _g.addEventListener('click', () => this.handleDelete()); // no need to call using bind() in arrow function
-        // (window as any).handleDelete = this.handleDelete; // make it globally available because i used type="module" with <script>
-        (_h = document.querySelector('#categorizeBooksForm button')) === null || _h === void 0 ? void 0 : _h.addEventListener('click', () => this.handleCategorize()); //   
-        // (window as any).handleCategorize = this.handleCategorize; // make it globally available because i used type="module" with <script>
+        (_h = document.querySelector('#categorizeBooksForm button')) === null || _h === void 0 ? void 0 : _h.addEventListener('click', () => this.handleCategorize()); //     
         (_j = document.getElementById('remove')) === null || _j === void 0 ? void 0 : _j.addEventListener('click', () => this.removeCategorizedBooks()); //also working
-        // (window as any).removeCategorizedBooks = this.removeCategorizedBooks; // make it globally available because i used type="module" with <script>
         (_k = document.getElementById('formContainer')) === null || _k === void 0 ? void 0 : _k.addEventListener('click', (e) => {
             if (e.target && e.target.id === 'formContainer') {
                 this.closeForm();
@@ -427,7 +423,6 @@ function showForm(formId) {
     document.querySelectorAll('#formContainer > div').forEach(div => div.classList.add('hidden')); // hide all the forms within the container
     (_a = document.getElementById(formId)) === null || _a === void 0 ? void 0 : _a.classList.remove('hidden');
 }
-// (window as any).showForm = showForm; // make it globally available because i used type="module" with <script>
 document.addEventListener('DOMContentLoaded', () => {
     new BookManage();
 });
