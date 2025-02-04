@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
   <title>Book Management System</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 </head>
 <body class="font-sans p-5">
 
@@ -22,7 +24,7 @@
     <!-- Modals for Forms -->
     <div id="formContainer" class="fixed inset-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-50">
       <div id="addBookForm" class="w-full max-w-md p-6 bg-white border border-gray-300 rounded hidden">
-        <form class="space-y-4">
+        <form class="space-y-4" id="clearAddForm">
           <h2 class="text-xl font-semibold">Add a New Book</h2>
           <label for="title" class="block font-medium">Book Title</label>
           <input type="text" id="title" name="title" placeholder="Enter book title" required class="w-full p-2 border border-gray-300 rounded">
@@ -30,6 +32,8 @@
           <input type="text" id="author" name="author" placeholder="Enter author name" required class="w-full p-2 border border-gray-300 rounded">
           <label for="isbn" class="block font-medium">ISBN</label>
           <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN number" required class="w-full p-2 border border-gray-300 rounded">
+          <label for="price" class="block font-medium">Price</label>
+          <input type="text" id="price" name="price" placeholder="Enter Price" required class="w-full p-2 border border-gray-300 rounded">
           <label for="pub_date" class="block font-medium">Publication Date</label>
           <input type="date" id="pub_date" name="pub_date" required class="w-full p-2 border border-gray-300 rounded">
           <label for="genre" class="block font-medium">Genre</label>
@@ -65,7 +69,7 @@
             <option value="fantasy">Fantasy</option>
             <option value="biography">Biography</option>
           </select>
-          <button onclick="handleEdit()" id="edit" class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Book</button>
+          <button id="edit" class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Book</button>
         </div>
       </div>
   
@@ -74,15 +78,15 @@
           <h2 class="text-xl font-semibold">Delete Book</h2>
           <label for="deleteIsbn" class="block font-medium">ISBN of Book to Delete</label>
           <input type="text" id="deleteIsbn" placeholder="Enter ISBN of the book to delete" required class="w-full p-2 border border-gray-300 rounded">
-          <button onclick="handleDelete()" class="w-full p-2 bg-red-600 text-white rounded hover:bg-red-700">Delete Book</button>
+          <button class="w-full p-2 bg-red-600 text-white rounded hover:bg-red-700">Delete Book</button>
         </div>
       </div>
   
       <div id="categorizeBooksForm" class="w-full max-w-md p-6 bg-white border border-gray-300 rounded hidden">
         <div class="space-y-4">
           <h2 class="text-xl font-semibold">Categorize Books</h2>
-          <button onclick="handleCategorize()" class="w-full p-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Categorize Books</button>
-          <button onclick="removeCategorizedBooks()" id="remove" class="w-full p-2 bg-gray-600 text-white rounded hover:bg-gray-700">Remove Categories</button>
+          <button  class="w-full p-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Categorize Books</button>
+          <button id="remove" class="w-full p-2 bg-gray-600 text-white rounded hover:bg-gray-700">Remove Categories</button>
         </div>
       </div>
     </div>
@@ -149,9 +153,8 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-  <script src="script.js"></script>
+  <!-- <script  type="module" src="dist/index.js"></script> -->
+  <script  src="dist/index.js"></script>
 
 </body>
 </html>

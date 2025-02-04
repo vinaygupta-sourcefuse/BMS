@@ -1,3 +1,1 @@
-# BMS
-
-let's learn new concepts together
+# temp-typescriptBMS
