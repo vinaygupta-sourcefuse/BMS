@@ -1,6 +1,9 @@
 import { Base } from './Book.js'; // Add `.js` extension after compiling to JS
+import { BookUtilities } from './BookUtilities.js';
+import { BookAgeCalculator } from './BookAgeCalculator';
 
-class BookManage {
+
+class BookFactory {
     private apiUrl: string = './books.json';
     private books: Base[] = [];
     private originalBooks: Base[] = [];
@@ -244,28 +247,20 @@ class BookManage {
         const genre = (document.getElementById('genre') as HTMLInputElement)?.value;
         
         const validStringPattern = /^[a-zA-Z0-9\s]+$/;
-        if (!validStringPattern.test(title)) { // Check if the title is valid 
+        if (title && !validStringPattern.test(title)) { // Check if the title is valid  and not empty
             toastr.error(`title must only contain letters, numbers, and spaces.`);
-          return;
-
         }
-        if (!validStringPattern.test(author)) { // Check if the title is valid 
+        if (author && !validStringPattern.test(author)) { // Check if the title is valid  and not empty
             toastr.error(`author must only contain letters, numbers, and spaces.`);
-          return;
-
         }
         if(isNaN(isbn) || isNaN(price)){
             toastr.error('isbn and price must be in Numbers')
-          return;
-
         }
         if(pubDate){
             const pubDateObj = new Date(pubDate);
             const regex = /^\d{4}-\d{2}-\d{2}$/;
-            if (!pubDateObj || isNaN(pubDateObj.getTime()) || pubDateObj > new Date() || !regex.test(pubDate)){
-                toastr.error('Invalid publication date.');
-                return;
-            }
+            if (!pubDateObj || isNaN(pubDateObj.getTime()) || pubDateObj > new Date() || !regex.test(pubDate))
+              toastr.error('Invalid publication date.');
         }
 
         if (this.books.some(book => book.isbn === isbn)) {
@@ -446,6 +441,6 @@ function showForm(formId: string): void {
 }
 (window as any).showForm = showForm; // make it globally available because i used type="module" with <script>
 
-document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to load before initializing the app
-    new BookManage();
+document.addEventListener('DOMContentLoaded', () => { 
+    new BookFactory();
 });
