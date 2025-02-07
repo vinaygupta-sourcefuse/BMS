@@ -1,0 +1,202 @@
+[
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "isbn": "1234567890",
+    "pubDate": "2000-07-11",
+    "genre": "fiction",
+    "price": 24.99
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "2345678901",
+    "pubDate": "1949-06-08",
+    "genre": "fiction",
+    "price": 19.49
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F Scott Fitzgerald",
+    "isbn": "3456789012",
+    "pubDate": "1925-04-10",
+    "genre": "fiction",
+    "price": 15.75
+  },
+  {
+    "title": "A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "isbn": "4567890123",
+    "pubDate": "2011-01-01",
+    "genre": "non-fiction",
+    "price": 34.90
+  },
+  {
+    "title": "The Hobbit",
+    "author": "JRR Tolkien",
+    "isbn": "5678901234",
+    "pubDate": "1937-09-21",
+    "genre": "fantasy",
+    "price": 29.99
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "9780141439518",
+    "pubDate": "1813-01-28",
+    "genre": "fiction",
+    "price": 10.99
+  },
+  {
+    "title": "The Lord of the Rings",
+    "author": "JRR Tolkien",
+    "isbn": "9780618260262",
+    "pubDate": "1954-07-29",
+    "genre": "fantasy",
+    "price": 40.50
+  },
+  {
+    "title": "The Hitchhikers Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "isbn": "9780345391803",
+    "pubDate": "1979-10-12",
+    "genre": "fiction",
+    "price": 17.80
+  },
+  {
+    "title": "The Book Thief",
+    "author": "Markus Zusak",
+    "isbn": "9780375842207",
+    "pubDate": "2005-03-14",
+    "genre": "fiction",
+    "price": 12.95
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "JD Salinger",
+    "isbn": "9780316769174",
+    "pubDate": "1951-07-16",
+    "genre": "fiction",
+    "price": 14.49
+  },
+  {
+    "title": "The Da Vinci Code",
+    "author": "Dan Brown",
+    "isbn": "9780307277671",
+    "pubDate": "2003-03-18",
+    "genre": "fiction",
+    "price": 25.00
+  },
+  {
+    "title": "Harry Potter and the Philosophers Stone",
+    "author": "JK Rowling",
+    "isbn": "9780747532699",
+    "pubDate": "1997-06-26",
+    "genre": "fantasy",
+    "price": 35.95
+  },
+  {
+    "title": "And Then There Were None",
+    "author": "Agatha Christie",
+    "isbn": "9780062073488",
+    "pubDate": "1939-11-06",
+    "genre": "mystery",
+    "price": 21.75
+  },
+  {
+    "title": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "isbn": "9780307277671",
+    "pubDate": "2005-08-20",
+    "genre": "fiction",
+    "price": 23.99
+  },
+  {
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "isbn": "9780439023481",
+    "pubDate": "2008-09-14",
+    "genre": "fiction",
+    "price": 20.49
+  },
+  {
+    "title": "The Lord of the Rings The Fellowship of the Ring",
+    "author": "JRR Tolkien",
+    "isbn": "6789012345",
+    "pubDate": "1954-07-29",
+    "genre": "fantasy",
+    "price": 38.00
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "isbn": "7890123456",
+    "pubDate": "1813-01-28",
+    "genre": "Non-fantasy",
+    "price": 9.99
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "JD Salinger",
+    "isbn": "8901234567",
+    "pubDate": "1951-07-16",
+    "genre": "fiction",
+    "price": 14.49
+  },
+  {
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "isbn": "9012345678",
+    "pubDate": "1988-05-01",
+    "genre": "fiction",
+    "price": 16.75
+  },
+  {
+    "title": "The Hitchhikers Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "isbn": "0123456789",
+    "pubDate": "1979-10-12",
+    "genre": "mystery",
+    "price": 17.80
+  },
+  {
+    "title": "Harry Potter and the Philosopher Stone",
+    "author": "JK Rowling",
+    "isbn": "1123456789",
+    "pubDate": "1997-06-26",
+    "genre": "Fantasy",
+    "price": 36.50
+  },
+  {
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "isbn": "2123456789",
+    "pubDate": "1890-04-20",
+    "genre": "biography",
+    "price": 18.20
+  },
+  {
+    "title": "The Color Purple",
+    "author": "Alice Walker",
+    "isbn": "3123456789",
+    "pubDate": "1982-01-01",
+    "genre": "fiction",
+    "price": 22.30
+  },
+  {
+    "title": "The Art of War",
+    "author": "Sun Tzu",
+    "isbn": "4123456789",
+    "pubDate": "1500-12-21",
+    "genre": "biography",
+    "price": 10.50
+  },
+  {
+    "title": "Thinking Fast and Slow",
+    "author": "Daniel Kahneman",
+    "isbn": "5123456789",
+    "pubDate": "2011-10-25",
+    "genre": "biography",
+    "price": 29.95
+  }
+]

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+  <title>Book Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+</head>
+<body class="font-sans p-5">
+
+  <h1 class="text-center text-3xl font-bold mb-6">Book Management System</h1>
+  <div class="">
+
+    <div class="flex justify-center mb-6 space-x-4">
+      <button onclick="showForm('addBookForm')" class="p-2 bg-green-600 text-white rounded hover:bg-green-700">Add Book</button>
+      <button onclick="showForm('editBookForm')" class="p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Edit Book</button>
+      <button onclick="showForm('deleteBookForm')" class="p-2 bg-red-600 text-white rounded hover:bg-red-700">Delete Book</button>
+      <button onclick="showForm('categorizeBooksForm')" class="p-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Categorize Books</button>
+    </div>
+  
+    <!-- Modals for Forms -->
+    <div id="formContainer" class="fixed inset-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-50 z-50">
+      <div id="addBookForm" class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded shadow-md hidden">
+        <form id="clearAddForm" class="space-y-3">
+          <h2 class="text-lg font-bold text-gray-800">Add a New Book</h2>
+          
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-600">Book Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter book title" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+          
+          <div>
+            <label for="author" class="block text-sm font-medium text-gray-600">Author</label>
+            <input type="text" id="author" name="author" placeholder="Enter author name" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+          
+          <div>
+            <label for="isbn" class="block text-sm font-medium text-gray-600">ISBN</label>
+            <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN number" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+          
+          <div>
+            <label for="price" class="block text-sm font-medium text-gray-600">Price</label>
+            <input type="text" id="price" name="price" placeholder="Enter Price" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+          
+          <div>
+            <label for="pub_date" class="block text-sm font-medium text-gray-600">Publication Date</label>
+            <input type="date" id="pub_date" name="pub_date" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+          
+          <div>
+            <label for="genre" class="block text-sm font-medium text-gray-600">Genre</label>
+            <select id="genre" name="genre" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+              <option value="">Select Genre</option>
+              <option value="fiction">Fiction</option>
+              <option value="non-fiction">Non-Fiction</option>
+              <option value="mystery">Mystery</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="biography">Biography</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="w-full p-2 bg-green-600 text-white text-sm rounded hover:bg-green-700 focus:ring focus:ring-green-300">
+            Add Book
+          </button>
+        </form>
+      </div>
+    
+      <div id="editBookForm" class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded shadow-md hidden">
+        <div class="space-y-3">
+          <h2 class="text-lg font-bold text-gray-800">Edit Book</h2>
+          
+          <div>
+            <label for="editIsbn" class="block text-sm font-medium text-gray-600">ISBN of Book to Edit</label>
+            <input type="text" id="editIsbn" placeholder="Enter ISBN of the book to edit" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300">
+          </div>
+          
+          <div>
+            <label for="newTitle" class="block text-sm font-medium text-gray-600">New Title (Optional)</label>
+            <input type="text" id="newTitle" placeholder="Enter new title" class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300">
+          </div>
+          
+          <div>
+            <label for="newAuthor" class="block text-sm font-medium text-gray-600">New Author (Optional)</label>
+            <input type="text" id="newAuthor" placeholder="Enter new author" class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300">
+          </div>
+          
+          <div>
+            <label for="newPrice" class="block text-sm font-medium text-gray-600">New Price (Optional)</label>
+            <input type="text" id="newPrice" placeholder="Enter new price" class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300">
+          </div>
+          
+          <div>
+            <label for="newPubDate" class="block text-sm font-medium text-gray-600">New Publication Date (Optional)</label>
+            <input type="date" id="newPubDate" class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300">
+          </div>
+          
+          <div>
+            <label for="newGenre" class="block text-sm font-medium text-gray-600">New Genre (Optional)</label>
+            <select id="newGenre" class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-blue-300 focus:outline-none">
+              <option value="">Select Genre</option>
+              <option value="fiction">Fiction</option>
+              <option value="non-fiction">Non-Fiction</option>
+              <option value="mystery">Mystery</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="biography">Biography</option>
+            </select>
+          </div>
+          
+          <button id="edit" class="w-full p-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 focus:ring focus:ring-blue-300">
+            Edit Book
+          </button>
+        </div>
+      </div>
+      
+    
+      <div id="deleteBookForm" class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded shadow-md hidden">
+        <div class="space-y-3">
+          <h2 class="text-lg font-bold text-gray-800">Delete Book</h2>
+          
+          <div>
+            <label for="deleteIsbn" class="block text-sm font-medium text-gray-600">ISBN of Book to Delete</label>
+            <input type="text" id="deleteIsbn" placeholder="Enter ISBN of the book to delete" required class="w-full p-2 text-sm border border-gray-300 rounded focus:ring focus:ring-red-300">
+          </div>
+          
+          <button class="w-full p-2 bg-red-600 text-white text-sm rounded hover:bg-red-700 focus:ring focus:ring-red-300">
+            Delete Book
+          </button>
+        </div>
+      </div>
+    
+      <div id="categorizeBooksForm" class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded shadow-md hidden">
+        <div class="space-y-3">
+          <h2 class="text-lg font-bold text-gray-800">Categorize Books</h2>
+          
+          <button class="w-full p-2 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 focus:ring focus:ring-indigo-300">
+            Categorize Books
+          </button>
+          <button id="remove" class="w-full p-2 bg-gray-600 text-white text-sm rounded hover:bg-gray-700 focus:ring focus:ring-gray-300">
+            Remove Categories
+          </button>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="ml-6 flex-1 border border-gray-300 p-6 rounded bg-gray-100">
+      <div id="bookCount" class="text-center text-lg font-bold mb-6">Number of books: 0</div>
+
+      <div class="bg-white p-6 shadow-md rounded-lg border border-gray-200 space-y-6">
+        <h2 class="text-2xl font-bold text-gray-800">Search and Filter Books</h2>
+      
+        <div class="space-y-4">
+          <div>
+            <label for="searchTerm" class="block text-gray-700 font-medium mb-1">Search by Title or Author</label>
+            <input type="text" id="searchTerm" placeholder="Enter title or author" 
+                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+      
+          <div>
+            <label for="filterGenre" class="block text-gray-700 font-medium mb-1">Filter by Genre</label>
+            <select id="filterGenre" 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none">
+              <option value="">Select Genres</option>
+              <option value="fiction">Fiction</option>
+              <option value="non-fiction">Non-Fiction</option>
+              <option value="mystery">Mystery</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="biography">Biography</option>
+            </select>
+          </div>
+      
+          <div>
+            <label for="filterYear" class="block text-gray-700 font-medium mb-1">Filter by Publication Year</label>
+            <input type="number" id="filterYear" placeholder="Enter year" 
+                   class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-300 focus:outline-none">
+          </div>
+        </div>
+      
+        <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0">
+          <button id="applyFilters" 
+                  class="flex-1 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none">
+            Apply Filters
+          </button>
+          <button id="resetFilters" 
+                  class="flex-1 p-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:outline-none">
+            Reset Filters
+          </button>
+        </div>
+      
+        <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0">
+          <button id="sortAsc" 
+                  class="flex-1 p-3 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:ring focus:ring-green-300 focus:outline-none">
+            Sort Ascending
+          </button>
+          <button id="sortDesc" 
+                  class="flex-1 p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:ring focus:ring-red-300 focus:outline-none">
+            Sort Descending
+          </button>
+        </div>
+      </div>
+      
+
+      <div id="bookList" class="mt-6 text-left">No books added yet.</div>
+      <div id="bookList1" class="mt-6"></div>
+    </div>
+  </div>
+
+  <script type="module" src="dist/controllers/Main.js" ></script>
+  <!-- <script  src="dist/index.js"></script> -->
+
+</body>
+</html>
